@@ -32,12 +32,6 @@
 						<complianceLevel>${maven.compiler.source}</complianceLevel>
 						<encoding>UTF-8</encoding>
 						<verbose>true</verbose>
-						<weaveDependencies>
-							<weaveDependency>
-								<groupId>com.qualizeal</groupId>
-								<artifactId>java-utaf</artifactId>
-							</weaveDependency>
-						</weaveDependencies>
 						<Xset>
 							<overWeaving>true</overWeaving>
 							<avoidFinal>false</avoidFinal>

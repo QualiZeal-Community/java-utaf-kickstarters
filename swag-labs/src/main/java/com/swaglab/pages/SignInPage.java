@@ -6,7 +6,6 @@ import com.qualizeal.pages.web.Page;
 import com.swaglab.util.users.SwagUserType;
 import com.swaglab.util.users.User;
 import com.swaglab.util.users.UserFactory;
-import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -72,8 +71,11 @@ public class SignInPage implements Page {
 		return new WebDriverWait(getDriver(), Duration.ofSeconds(90)).until(condition);
 	}
 
-	@SneakyThrows
 	private void delayABit() {
-		Thread.sleep(2000);
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			//do nothing
+		}
 	}
 }

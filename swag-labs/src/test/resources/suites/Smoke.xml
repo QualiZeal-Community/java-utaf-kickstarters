@@ -2,14 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="OpenMart Smoke tests">
-	<groups>
-		<run>
-			<include name="SMOKE"/>
-		</run>
-	</groups>
 	<test name="Consumer Access Tests" parallel="classes" thread-count="3">
 		<packages>
-			<package name="com.opencart.tests"/>
+			<package name="com.swaglab.tests.login"/>
 		</packages>
 	</test>
 </suite>
