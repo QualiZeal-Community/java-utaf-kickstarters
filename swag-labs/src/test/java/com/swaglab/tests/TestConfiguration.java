@@ -13,6 +13,7 @@ import com.swaglab.pages.SignInPage;
 import com.swaglab.util.users.UserFactory;
 import lombok.SneakyThrows;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.MDC;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -44,7 +45,10 @@ public class TestConfiguration {
 
 	@BeforeClass(alwaysRun = true)
 	public void initDriver() {
-		testDrivers.setWebDriverInstance(new ChromeDriver());
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setHeadless(true);
+		chromeOptions.addArguments("start-maximized");
+		testDrivers.setWebDriverInstance(new ChromeDriver(chromeOptions));
 	}
 
 	@BeforeMethod(alwaysRun = true)
