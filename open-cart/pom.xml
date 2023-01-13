@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>java-utaf-starter-projects</artifactId>
+		<groupId>com.qualizeal</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>open-cart</artifactId>
+
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<default-suite>Smoke.xml</default-suite>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<version>1.14.0</version>
+					<configuration>
+						<showWeaveInfo>true</showWeaveInfo>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.source}</target>
+						<Xlint>ignore</Xlint>
+						<complianceLevel>${maven.compiler.source}</complianceLevel>
+						<encoding>UTF-8</encoding>
+						<verbose>true</verbose>
+						<weaveDependencies>
+							<weaveDependency>
+								<groupId>com.qualizeal</groupId>
+								<artifactId>java-utaf</artifactId>
+							</weaveDependency>
+						</weaveDependencies>
+						<Xset>
+							<overWeaving>true</overWeaving>
+							<avoidFinal>false</avoidFinal>
+						</Xset>
+					</configuration>
+					<executions>
+						<execution>
+							<!-- IMPORTANT -->
+							<phase>process-classes</phase>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjtools</artifactId>
+							<version>${aspectj.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.source}</target>
+					<useIncrementalCompilation>false</useIncrementalCompilation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<suiteXmlFiles>
+						<file>src/test/resources/suites/${default-suite}</file>
+					</suiteXmlFiles>
+					<argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+					<argLine>--add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,5 @@
+TestID,NavbarItems,Product
+shouldDisplayTheTopNavbar,"Desktops,Laptops & Notebooks,Components,Tablets",
+shouldDisplayedFeaturedProducts,,iPhone
+shouldOpenProductPage,,iPhone
+shouldBeAbleToSearchForProducts,,iPhone

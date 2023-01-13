@@ -1,0 +1,5 @@
+TestID,ErrorMessage
+shouldNotBeAbleToLoginWithValidUserNameAndInvalidPassword,"Epic sadface: Username and password do not match any user in this service"
+shouldNotBeAbleToLoginWithInValidUserNameAndValidPassword,"Epic sadface: Username and password do not match any user in this service"
+shouldNotBeAbleToLoginWithLockedOutUser,"Epic sadface: Sorry, this user has been locked out."
+shouldNotBeAbleToLoginWithoutUsernameAndPassword,"Epic sadface: Username is required"

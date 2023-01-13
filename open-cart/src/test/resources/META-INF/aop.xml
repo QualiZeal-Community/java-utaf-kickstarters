@@ -1,0 +1,14 @@
+<aspectj>
+	<aspects>
+		<aspect name="com.qualizeal.aspects.ComponentAspect"/>
+		<aspect name="com.qualizeal.aspects.LoggingAspect"/>
+	</aspects>
+
+	<weaver options="-verbose -showWeaveInfo"/>
+	<weaver>
+		<include within="com.opencart.components.*"/>
+		<include within="com.opencart.tests.*"/>
+		<include within="com.opencart.pages.*.*"/>
+		<include within="com.opencart.modules.*.*"/>
+	</weaver>
+</aspectj>
